@@ -71,7 +71,7 @@ export default function Home() {
                       <Image src={ApiSVG} className="w-100" style={{ height: "auto "}}/>
                     </div>
                     <p>
-                      API's empowers a mobile application or platform to share
+                      API&apos;s empowers a mobile application or platform to share
                       its data with other apps/platforms and ease the user
                       experience without involving the developers. On the top of
                       it, APIs eliminate the need to build a similar program or

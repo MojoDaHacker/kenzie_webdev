@@ -6,7 +6,7 @@ const Header = () => {
     <Navbar expand="md" variant="light" className="px-2">
       <Navbar.Brand>
         <div>
-          <h2>Kenzie's Web Solutions</h2>
+          <h2>Kenzie&apos;s Web Solutions</h2>
         </div>
       </Navbar.Brand>
       {/* <Navbar.Toggle id="responsiveNav" />
