@@ -1,9 +1,23 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Raleway } from "@next/font/google";
+import styles from "../styles/Home.module.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import {
+  Button,
+  Carousel,
+  Col,
+  Container,
+  Form,
+  Row,
+  Tabs,
+  Tab,
+} from "react-bootstrap";
+import { MobileSVG, WebSVG, ApiSVG, ComputerSVG } from "../public/images";
+import AppointmentForm from "../components/AppointmentForm";
 
-const inter = Inter({ subsets: ['latin'] })
+const raleway = Raleway({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -14,110 +28,110 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+        <Container className={`${raleway.className} text-center`} style={{ minHeight: "100vh" }}>
+          <Row xs={1} md={2}>
+            <Col className="order-1 order-md-0">
+              <Image src={ComputerSVG} className="w-100" style={{ height: "auto "}}/>
+            </Col>
+            <Col className="text-start mt-2">
+              <div>
+                <p className="display-4 fw-semibold">
+                  Here to help bring your ideas,
+                  wireframes, or technical specs to working applications.{" "}
+                </p>
+                <div className="w-75 text-center mx-auto">
+                  {/* <AppointmentForm /> */}
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Row xs={1} className="mt-3">
+            <Col>
+              <Tabs fill>
+                <Tab eventKey="web" title="Web" className="mt-2">
+                  <h3>Web Development</h3>
+                  <div>
+                    <Image src={WebSVG} className="w-100" style={{ height: "auto "}} />
+                  </div>
+                  <p>
+                    While web development typically refers to web markup and
+                    coding, website development includes all related development
+                    tasks, such as client-side scripting, server-side scripting,
+                    server and network security configuration, eCommerce
+                    development, and content management system (CMS)
+                    development.
+                  </p>
+                </Tab>
+                <Tab eventKey="api" title="APIs" className="mt-2">
+                  <div>
+                    <h3>API Development</h3>
+                    <div>
+                      <Image src={ApiSVG} className="w-100" style={{ height: "auto "}}/>
+                    </div>
+                    <p>
+                      API's empowers a mobile application or platform to share
+                      its data with other apps/platforms and ease the user
+                      experience without involving the developers. On the top of
+                      it, APIs eliminate the need to build a similar program or
+                      platform from scratch; you can use the existing one or
+                      some other app/platform.
+                    </p>
+                  </div>
+                </Tab>
+                <Tab eventKey="mobile" title="Mobile" className="mt-2">
+                  <div>
+                    <h3>Mobile Development</h3>
+                    <div>
+                      <Image
+                        src={MobileSVG}
+                        className="w-100"
+                        style={{ height: "auto "}}
+                      />
+                    </div>
+                    <p>
+                      Mobile app development is rapidly growing. From retail,
+                      telecommunications and e-commerce to insurance, healthcare
+                      and government, organizations across industries must meet
+                      user expectations for real-time, convenient ways to
+                      conduct transactions and access information.
+                    </p>
+                  </div>
+                </Tab>
+              </Tabs>
+            </Col>
+          </Row>
+          <Row className="my-3">
+            <Col>
+              <AppointmentForm />
+            </Col>
+          </Row>
+          {/* <Row className="mt-3">
+            <Col className="p-3 text-start">
+              <h2>Wordpress Plugins</h2>
+              <p>
+                WordPress plugins are tools that can help you enhance the
+                functionality of your website, without the need to learn coding.
+                You can think of them as apps that give you more control over
+                your content.
+              </p>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col className="p-3 text-end">
+              <h2>Digital Marketing</h2>
+              <p>
+                Leverage digital channels such as search engines, social media,
+                email, and other websites to connect with current and
+                prospective customers. This also includes communication through
+                text or multimedia messages.
+              </p>
+            </Col>
+          </Row> */}
+        </Container>
       </main>
+      <Footer />
     </>
-  )
+  );
 }
