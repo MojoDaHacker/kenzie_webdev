@@ -27,24 +27,7 @@ const AppointmentForm = () => {
 
     if (!show) return setShow(true);
 
-    const init = {
-      url: "https://acuityscheduling.com/api/v1/appointments",
-      auth: {
-        username: "28254626",
-        password: "559fa94e3fd8d4e0c19e4f17ed63e24c"
-      },
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-      // params: {
-      //   max: "100",
-      //   canceled: "false",
-      //   excludeForms: "false",
-      //   direction: "DESC",
-      // },
-    };
-
-    axios("https://acuityscheduling.com/api/v1/appointments", init)
+    axios("/api/createConsultation")
       .then(function (response) {
         console.log(response.data);
       })
