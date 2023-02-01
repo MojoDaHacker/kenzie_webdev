@@ -53,9 +53,9 @@ export default function Home() {
                 <Tab eventKey="web" title="Web" className="mt-2">
                   <h3>Web Development</h3>
                   <div>
-                    <Image src={WebSVG} className="w-100" style={{ height: "auto "}} />
+                    <Image src={WebSVG} className="w-75" style={{ height: "auto "}} />
                   </div>
-                  <p>
+                  <p style={{ maxWidth: 640 }} className="mx-auto">
                     While web development typically refers to web markup and
                     coding, website development includes all related development
                     tasks, such as client-side scripting, server-side scripting,
@@ -68,9 +68,9 @@ export default function Home() {
                   <div>
                     <h3>API Development</h3>
                     <div>
-                      <Image src={ApiSVG} className="w-100" style={{ height: "auto "}}/>
+                      <Image src={ApiSVG} className="w-75" style={{ height: "auto "}}/>
                     </div>
-                    <p>
+                    <p style={{ maxWidth: 640 }} className="mx-auto">
                       API&apos;s empowers a mobile application or platform to share
                       its data with other apps/platforms and ease the user
                       experience without involving the developers. On the top of
@@ -86,11 +86,11 @@ export default function Home() {
                     <div>
                       <Image
                         src={MobileSVG}
-                        className="w-100"
+                        className="w-75"
                         style={{ height: "auto "}}
                       />
                     </div>
-                    <p>
+                    <p style={{ maxWidth: 640 }} className="mx-auto">
                       Mobile app development is rapidly growing. From retail,
                       telecommunications and e-commerce to insurance, healthcare
                       and government, organizations across industries must meet

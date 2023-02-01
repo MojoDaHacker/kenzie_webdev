@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import EnvelopeIcon from "@heroicons/react/24/solid/EnvelopeIcon";
+import PhoneIcon from "@heroicons/react/24/solid/PhoneIcon";
 import { Button, Form } from "react-bootstrap";
 
 const AppointmentForm = ({ description }) => {
@@ -26,13 +28,13 @@ const AppointmentForm = ({ description }) => {
         break;
     }
   };
-  const handleChangePhoneOrEmail = () => setPhoneOrEmail(!showPhoneOrEmail)
+  const handleChangePhoneOrEmail = () => setPhoneOrEmail(!showPhoneOrEmail);
 
   const submitForm = (e) => {
     e.preventDefault();
 
     if (!show) return setShow(true);
-    var contactRequest = show ? "phone" : "email"
+    var contactRequest = show ? "phone" : "email";
 
     axios
       .post("/api/createConsultation", {
@@ -52,8 +54,10 @@ const AppointmentForm = ({ description }) => {
 
   return (
     <>
-      <p>{description ? description : "Find out how we can get you started."}</p>
-      <Form onSubmit={submitForm}>
+      <p>
+        {description ? description : "Find out how we can get you started."}
+      </p>
+      <Form onSubmit={submitForm} style={{ maxWidth: 640 }} className="mx-auto">
         {show ? (
           <>
             <Form.Group className="my-3">
@@ -66,9 +70,10 @@ const AppointmentForm = ({ description }) => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group className="my-3">
+            <Form.Group className="my-3 d-flex">
               {showPhoneOrEmail ? (
                 <Form.Control
+                  className="w-75"
                   type="number"
                   placeholder="Phone"
                   name="phone"
@@ -84,6 +89,15 @@ const AppointmentForm = ({ description }) => {
                   onChange={handleChange}
                 />
               )}
+              <Button className="ms-5" type="button" onClick={handleChangePhoneOrEmail}>
+                <div>
+                  {showPhoneOrEmail ? (
+                    <EnvelopeIcon style={{ width: "1rem" }} />
+                  ) : (
+                    <PhoneIcon style={{ width: "1rem" }} />
+                  )}
+                </div>
+              </Button>
             </Form.Group>
             <Form.Group className="my-3">
               <Form.Control
@@ -100,7 +114,6 @@ const AppointmentForm = ({ description }) => {
         ) : null}
         <Form.Group>
           <Button type="submit">{show ? "Submit" : "Let's Talk"}</Button>
-          <Button type="button" onClick={handleChangePhoneOrEmail}>{showPhoneOrEmail ? "Use Email" : "Use Phone"}</Button>
         </Form.Group>
       </Form>
     </>
