@@ -1,19 +1,20 @@
+const withMakeswift = require("@makeswift/runtime/next/plugin")();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    fontLoaders: [
-      { loader: '@next/font/google', options: { subsets: ['latin'] } },
-    ],
+    fontLoaders: [{
+      loader: '@next/font/google',
+      options: {
+        subsets: ['latin']
+      }
+    }]
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos'
-      }
-    ]
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'picsum.photos'
+    }]
   },
-  reactStrictMode: true,
-}
-
-module.exports = nextConfig
+  reactStrictMode: true
+};
+module.exports = withMakeswift(nextConfig);
