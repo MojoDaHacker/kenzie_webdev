@@ -2,16 +2,20 @@
 
 //@ts-nocheck
 import { usePathname } from "next/navigation";
-import Navs from "./Navs";
+import { useState } from "react";
+import { Loader } from "rsuite";
 
 /**
  * Component for "Hero" Slices.
  */
-const Hero = ({ children }: any): JSX.Element => {
+const Hero = ({ children, href }: any): JSX.Element => {
+    const [isVideoLoading, setVideoLoading] = useState(true)
     const path = usePathname()
     const isPathHome = path == "/"
     const blurActive = isPathHome ? "" : "backdrop-blur"
     const brightnessActive = isPathHome ? "" : "brightness-50"
+
+    const handleVideoLoad = () => setVideoLoading(false);
 
     return (
         <section
@@ -20,14 +24,19 @@ const Hero = ({ children }: any): JSX.Element => {
         >
             <div style={{ width: "100%", height: "100%", position: "relative" }}>
                 <div className={`z-0 ${brightnessActive}`} style={{ width: "100%", height: "100%", position: "absolute" }}>
-                    <video muted autoPlay style={{ objectFit: "cover", display: "block", width: "100%", height: "100%", padding: 0, margin: 0 }} loop preload="none">
-                        <source src="/exportedHeroVideo.mp4" type="video/mp4" />
+                    <video onLoad={handleVideoLoad} muted autoPlay style={{ objectFit: "cover", display: "block", width: "100%", height: "100%", padding: 0, margin: 0 }} loop preload="none">
+                        <source src={href} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>
+
                 <div className={`h-full ${blurActive}  py-12`}>
                     <div className="container mx-auto h-full z-20 relative overflow-scroll">
-                        {children}
+                        {!isVideoLoading ? (
+                            <div className=" h-full flex justify-center items-center">
+                                <Loader size="md" />
+                            </div>
+                        ) : children}
                     </div>
                 </div>
             </div>
