@@ -20,8 +20,9 @@ const Hero = ({ children, href }: any): JSX.Element => {
 
     useEffect(() => {
         if (!ref.current) return
+        console.log(ref.current.currentTime)
         ref.current.onloadeddata = handleVideoLoad
-    }, [])
+    }, [ref])
 
     return (
         <section
