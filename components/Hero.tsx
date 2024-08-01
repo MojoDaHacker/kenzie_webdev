@@ -8,20 +8,22 @@ import { Loader } from "rsuite";
 /**
  * Component for "Hero" Slices.
  */
-const Hero = ({ children, href }: any): JSX.Element => {
+const Hero = ({ children, playbackId }: any): JSX.Element => {
     const [isVideoLoading, setVideoLoading] = useState(true)
-    const ref = useRef<HTMLVideoElement>();
+    const ref = useRef<HTMLVideoElement>()
     const path = usePathname()
     const isPathHome = path == "/"
     const blurActive = isPathHome ? "" : "backdrop-blur"
     const brightnessActive = isPathHome ? "" : "brightness-50"
 
-    const handleVideoLoad = () => { ref.current.play(); setVideoLoading(false) };
+    const handleVideoLoad = (video: HTMLVideoElement) => { video.play(); setVideoLoading(false) };
 
     useEffect(() => {
-        if (!ref.current) return
-        console.log(ref.current.currentTime)
-        ref.current.onloadeddata = handleVideoLoad
+        const video = ref.current
+
+        if (!video || video.currentTime > 0) return
+        if (video.readyState !== 4) video.onloadeddata = () => handleVideoLoad(video);
+        else handleVideoLoad(video)
     }, [ref])
 
     return (
@@ -31,9 +33,8 @@ const Hero = ({ children, href }: any): JSX.Element => {
         >
             <div style={{ width: "100%", height: "100%", position: "relative" }}>
                 <div className={`z-0 ${brightnessActive}`} style={{ width: "100%", height: "100%", position: "absolute" }}>
-                    <video ref={ref} playsInline preload="auto" muted style={{ objectFit: "cover", display: "block", width: "100%", height: "100%", padding: 0, margin: 0 }} loop>
-                        <source src="/exportedHeroVideo.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
+                    <video ref={ref} loop muted style={{ zIndex: 100, objectFit: "cover", display: "block", width: "100%", height: "100%", padding: 0, margin: 0 }}>
+                        <source src={`https://stream.mux.com/${playbackId}/capped-1080p.mp4`} />
                     </video>
                 </div>
 

@@ -16,7 +16,7 @@ const Page = (props: Props) => {
                     objectFit='contain'
                 />
             </div>
-            <article className='w-full md:w-1/2  mx-auto mt-12'>
+            <article className='w-full md:w-3/4  mx-auto mt-12'>
                 <div className='mb-4 text-center'>
                     <p>Welcome to my corner of the skies! I'm Matthew McKenzie, a passionate drone videographer dedicated to capturing the world from a unique perspective. My journey into drone videography began with a fascination for the art of storytelling and the boundless possibilities offered by aerial views. Today, I combine cutting-edge technology with a creative vision to bring you stunning, cinematic content.</p>
                 </div>
