@@ -21,6 +21,8 @@ const Hero = ({ children, playbackId }: any): JSX.Element => {
     useEffect(() => {
         const video = ref.current
 
+        video.play();
+
         if (!video || video.currentTime > 0) return
         if (video.readyState !== 4) video.onloadeddata = () => handleVideoLoad(video);
         else handleVideoLoad(video)
@@ -33,7 +35,7 @@ const Hero = ({ children, playbackId }: any): JSX.Element => {
         >
             <div style={{ width: "100%", height: "100%", position: "relative" }}>
                 <div className={`z-0 ${brightnessActive}`} style={{ width: "100%", height: "100%", position: "absolute" }}>
-                    <video ref={ref} src={`https://stream.mux.com/${playbackId}/capped-1080p.mp4`} playsInline loop muted>
+                    <video ref={ref}  src={`https://stream.mux.com/${playbackId}/capped-1080p.mp4`} playsInline loop muted style={{ objectFit: "cover", display: "absolute", width: "100%", height: "100%", padding: 0, margin: 0 }}>
                         <source type="video/mp4"/>
                     </video>
                 </div>
