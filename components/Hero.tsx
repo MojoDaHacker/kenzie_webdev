@@ -34,7 +34,7 @@ const Hero = ({ children, playbackId }: any): JSX.Element => {
             <div style={{ width: "100%", height: "100%", position: "relative" }}>
                 <div className={`z-0 ${brightnessActive}`} style={{ width: "100%", height: "100%", position: "absolute" }}>
                     <video ref={ref} playsInline loop muted style={{ zIndex: 100, objectFit: "cover", display: "block", width: "100%", height: "100%", padding: 0, margin: 0 }}>
-                        <source src={`https://stream.mux.com/${playbackId}/capped-1080p.mp4`} />
+                        <source src={`https://stream.mux.com/${playbackId}/capped-1080p.mp4`} type="video/mp4"/>
                     </video>
                 </div>
 
