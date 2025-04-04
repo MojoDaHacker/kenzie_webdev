@@ -6,7 +6,7 @@ type Props = {}
 
 const Page = (props: Props) => {
     return (
-        <div className='w-full h-full p-12 bg-black'>
+        <div className='w-full h-full p-12'>
             <div className='w-1/2 h-1/2 relative mx-auto'>
                 <Image
                     className='w-full h-full'
