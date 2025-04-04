@@ -13,7 +13,7 @@ const Hero = ({ children, playbackId }: any): JSX.Element => {
     const ref = useRef<HTMLVideoElement>()
     const path = usePathname()
     const isPathHome = path == "/"
-    const blurActive = isPathHome ? "" : "backdrop-blur"
+    const blurActive = isPathHome ? "" : "backdrop-blur-sm"
     const brightnessActive = isPathHome ? "" : "brightness-50"
 
     const handleVideoLoad = (video: HTMLVideoElement) => { video.play(); setVideoLoading(false) };
