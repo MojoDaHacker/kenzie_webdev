@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-@config '../tailwind.config.js';
-
 @layer utilities {
   body {
     margin: 0;

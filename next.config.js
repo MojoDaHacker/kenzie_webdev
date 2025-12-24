@@ -1,6 +1,5 @@
 const { withNextVideo } = require('next-video/process')
 
-const withMakeswift = require("@makeswift/runtime/next/plugin")();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -11,4 +10,4 @@ const nextConfig = {
   },
   reactStrictMode: true
 };
-module.exports = withMakeswift(nextConfig);
+module.exports = nextConfig;

@@ -1,13 +1,15 @@
-import React from 'react'
-import Image from 'next/image'
-import CallToAction from '../../components/CallToAction'
-
+import Link from 'next/link'
+import localFont from 'next/font/local'
+ 
+const myFont = localFont({
+  src: '../../public/fonts/Lato-Black.ttf',
+})
 type Props = {}
 
 const Page = (props: Props) => {
     return (
-        <div className='w-full h-full p-12 bg-black'>
-            <div className='w-1/2 h-1/2 relative mx-auto'>
+        <div className='w-full h-full px-12 '>
+            {/* <div className='w-1/2 h-1/2 relative mx-auto'>
                 <Image
                     className='w-full h-full'
                     src={"/headshot.png"}
@@ -15,10 +17,19 @@ const Page = (props: Props) => {
                     fill
                     objectFit='contain'
                 />
-            </div>
-            <article className='w-full md:w-3/4  mx-auto mt-12'>
+            </div> */}
+            <article className='w-full md:w-3/4  mx-auto'>
                 <div className='mb-4 text-center'>
-                    <p>Welcome to my corner of the skies! I'm Matthew McKenzie, a passionate drone videographer dedicated to capturing the world from a unique perspective. My journey into drone videography began with a fascination for the art of storytelling and the boundless possibilities offered by aerial views. Today, I combine cutting-edge technology with a creative vision to bring you stunning, cinematic content.</p>
+                    <h1 className={myFont.className + " text-4xl"}>THE PLAYGROUND</h1>
+                    <p>
+                        Welcome to my corner of the skies! I'm Matthew McKenzie,
+                        a passionate drone videographer dedicated to capturing
+                        the world from a unique perspective. My journey into
+                        drone videography began with a fascination for the art
+                        of storytelling and the boundless possibilities offered
+                        by aerial views. Today, I combine cutting-edge technology
+                        with a creative vision to bring you stunning content.
+                    </p>
                 </div>
                 {/* <div className='mb-4'>
                     <h1>My Mission</h1>
@@ -35,7 +46,7 @@ const Page = (props: Props) => {
                     </ol>
                 </div> */}
                 <div className='mb-4 text-base'>
-                    <h1 className=''>My Services</h1>
+                    <h1 className=''>Services</h1>
                     <ul className='w-4/5  mx-auto list-decimal'>
                         <li><p>Real Estate Videos</p> <p className='pl-2 italic antialiased mb-2'>Showcase properties from an aerial perspective, highlighting their features and surroundings.</p></li>
                         <li><p>Event Coverage</p> <p className='pl-2 italic antialiased mb-2'>Capture the excitement and scale of weddings, festivals, and corporate events with dynamic aerial shots.</p></li>
@@ -46,7 +57,14 @@ const Page = (props: Props) => {
                 <div className='mb-4'>
                     <div className='text-center mb-3'>
                         <h1>Let's Get Started</h1>
-                        <p>I'm excited to work with you and bring your vision to life. Whether you have a specific idea in mind or need guidance to conceptualize your project, feel free to reach out. Let's elevate your content to new heights!</p>
+                        <p>
+                            I'm excited to work with you and
+                            bring your vision to life. Whether
+                            you have a specific idea in mind or
+                            need guidance to conceptualize your
+                            project, feel free to reach out.
+                            Let's elevate your content to new heights!
+                        </p>
                     </div>
                     {/* <div>
                         <p>[Your Contact Information]</p>
@@ -55,10 +73,11 @@ const Page = (props: Props) => {
 
                     </div> */}
                 </div>
-
-
             </article>
-            <CallToAction />
+            <div className="text-center">
+                <Link href="/contact"><button className='p-2 bg-orange-300 text-white rounded-lg'>Contact Us Today</button></Link>
+            </div>
+            {/* <CallToAction /> */}
         </div>
     )
 }

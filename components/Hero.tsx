@@ -2,15 +2,15 @@
 
 //@ts-nocheck
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { Loader } from "rsuite";
+import { useEffect, useRef, useState, type JSX } from "react";
+// import { Loader } from "rsuite";
 
 /**
  * Component for "Hero" Slices.
  */
 const Hero = ({ children, playbackId }: any): JSX.Element => {
     const [isVideoLoading, setVideoLoading] = useState(true)
-    const ref = useRef<HTMLVideoElement>()
+    const ref = useRef<HTMLVideoElement>(undefined)
     const path = usePathname()
     const isPathHome = path == "/"
     const blurActive = isPathHome ? "" : "backdrop-blur-sm"
@@ -44,7 +44,7 @@ const Hero = ({ children, playbackId }: any): JSX.Element => {
                     <div className="container mx-auto h-full z-20 relative overflow-scroll">
                         {isVideoLoading ? (
                             <div className=" h-full flex justify-center items-center">
-                                <Loader size="md" />
+                                {/* <Loader size="md" /> */}
                             </div>
                         ) : children}
                     </div>
