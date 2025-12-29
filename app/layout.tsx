@@ -11,7 +11,7 @@ type Props = {}
 const Layout = async ({ children }: any) => {
   const playbackId = process.env.PLAYBACK_ID;
   return (
-    <html lang="en" className="h-screen">
+    <html lang="en" className="h-svh">
       <body className='text-orange-300 bg-black relative h-full'>
         <div className='h-full flex flex-col relative z-10'>
           <div>
