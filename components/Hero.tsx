@@ -30,8 +30,7 @@ const Hero = ({ children, playbackId }: any): JSX.Element => {
 
     return (
         <section
-            // className="px-12"
-            style={{ height: "100vh", backgroundColor: "black" }}
+            className="h-svh bg-black"
         >
             <div style={{ width: "100%", height: "100%", position: "relative" }}>
                 <div className={`z-0 ${brightnessActive}`} style={{ width: "100%", height: "100%", position: "absolute" }}>
