@@ -1,10 +1,9 @@
-import React, { Suspense } from 'react'
 import "../styles/globals.css"
-// import 'rsuite/dist/rsuite-no-reset.min.css';
-// import { CustomProvider } from 'rsuite'
 import Hero from '../components/Hero'
 import Back from '../components/Back'
 import Navs from '../components/Navs';
+
+import { Analytics } from "@vercel/analytics/next"
 
 type Props = {}
 
@@ -30,6 +29,7 @@ const Layout = async ({ children }: any) => {
           <Hero playbackId={playbackId} />
         </div>
         {/* <PrismicPreview repositoryName={repositoryName} /> */}
+      <Analytics />
       </body>
     </html>
   );
