@@ -1,8 +1,5 @@
 type Props = {}
 
-const Page = (props: Props) => {
-  
-  return null
-}
+const Page = (props: Props) => null
 
 export default Page

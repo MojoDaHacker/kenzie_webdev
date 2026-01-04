@@ -16,20 +16,20 @@ const Layout = async ({ children }: any) => {
           <div>
             <Back />
           </div>
-          <main className='flex-1 overflow-auto'>
+          <main className='flex-1 overflow-hidden'>
             {children}
           </main>
-          <div className='w-full '>
-            <div className='w-full h-full flex justify-end items-end p-6'>
-              <Navs />
-            </div>
+
+          <div className='w-full h-full flex justify-end items-end p-6'>
+            <Navs />
           </div>
         </div>
+
         <div className='h-dvh absolute top-0 w-full'>
           <Hero playbackId={playbackId} />
         </div>
         {/* <PrismicPreview repositoryName={repositoryName} /> */}
-      <Analytics />
+        <Analytics />
       </body>
     </html>
   );
