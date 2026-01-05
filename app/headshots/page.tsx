@@ -7,7 +7,7 @@ type Props = {}
 const page = (props: Props) => {
     return (
         <div className="text-2xl h-full">
-            <div className="h-full">
+            <div className="h-screen">
                 <div className="p-4 min-h-[75vh] flex flex-col justify-around">
                     <h1 className="text-6xl md:text-center">Are your first impressions a bit <span className="italic">off</span> ?</h1>
                     {/* <Image width={1080} height={1080} src={"/headshots/1-.png"} alt="" className="w-1/2 mx-auto"/> */}
