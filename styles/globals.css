@@ -1,46 +1,85 @@
 @import 'tailwindcss';
 
 @layer utilities {
-  body {
-    margin: 0;
-    padding: 0;
-    color: white;
-    font-size: larger;
-  }
+    body {
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-size: larger;
+    }
 }
+
 @layer base {
-    h1,h2,h3 {
+
+    h1,
+    h2,
+    h3 {
         @apply mb-2;
     }
+
     h1 {
         @apply text-2xl;
     }
+
     h2 {
         @apply text-xl;
     }
+
     h3 {
         @apply text-lg;
     }
+
     /* ... */
+
+    .parallax {
+        perspective: 1px;
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .parallax__layer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .parallax__layer--base {
+        transform: translateZ(0);
+    }
+
+    .parallax__layer--back {
+        transform: translateZ(-1px);
+    }
+
+    .title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
 }
 
 .button {
-	background-color:transparent;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:17px;
-	/* padding:16px 31px; */
-	text-decoration:none;
-	border:none;
-	/* text-shadow:0px 1px 0px #2f6627; */
+    background-color: transparent;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 17px;
+    /* padding:16px 31px; */
+    text-decoration: none;
+    border: none;
+    /* text-shadow:0px 1px 0px #2f6627; */
 }
 
 .button:hover {
-	background-color:transparent;
+    background-color: transparent;
 }
 
 .button:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }

@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.0.14",
     "@knocklabs/node": "^0.4.14",
     "@makeswift/runtime": "^0.10.7",
+    "@react-spring/web": "^10.0.3",
     "@trycourier/courier": "^4.1.0",
     "@vercel/analytics": "^1.6.1",
     "@vercel/blob": "^0.23.4",
