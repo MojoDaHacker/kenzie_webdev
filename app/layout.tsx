@@ -25,9 +25,9 @@ const Layout = async ({ children }: any) => {
             </div>
           </div>
         </div>
-        <div className='h-dvh absolute top-0 w-full'>
+        {/* <div className='h-dvh absolute top-0 w-full'>
           <Hero playbackId={playbackId} />
-        </div>
+        </div> */}
         {/* <PrismicPreview repositoryName={repositoryName} /> */}
       <Analytics />
       </body>

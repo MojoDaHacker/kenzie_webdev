@@ -58,9 +58,9 @@ const page = (props: Props) => {
                     a single word is spoken.
                 </h2>
             </div>
-            <div>
-                <Image width={1296} height={1296} src={"/studio.jpg"} alt="" className="h-100 md:h-148 object-cover" />
-                <div className="p-4">
+            <div className="flex flex-col md:flex-row">
+                <Image width={1296} height={1296} src={"/studio.jpg"} alt="" className="h-100 md:h-148 w-full object-cover" />
+                <div className="p-4 my-auto">
                     <p className="my-2">
                         At The Playground we offer video production and digital services to small businesses in and around phoenix.
                     </p>
