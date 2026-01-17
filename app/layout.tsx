@@ -20,7 +20,7 @@ const Layout = async ({ children }: any) => {
             {children}
           </main>
           <div className='w-full '>
-            <div className='w-full h-full flex justify-end items-end p-6'>
+            <div className='w-full h-full flex justify-end items-end px-6'>
               <Navs />
             </div>
           </div>
