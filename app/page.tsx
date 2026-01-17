@@ -42,8 +42,8 @@ const Page = (props: Props) => {
                 </div>
                 {/* <p className="justify-self-end w-full">A bit cliche, we know...</p> */}
             </section>
-            <section className="relative mb-24">
-                <div className="hidden md:block">
+            <section className="relative md:h-full mb-24">
+                <div className="hidden md:block h-full">
                     <div className="absolute top-40">
                         <h2 className={clsx(BLACK.className, "-rotate-90 uppercase text-6xl")}>Services</h2>
                     </div>
