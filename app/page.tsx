@@ -53,7 +53,7 @@ const Page = (props: Props) => {
                     <div className="m-4">
                         <h2 className={clsx(BLACK.className, "uppercase text-4xl")}>Services</h2>
                     </div>
-                    <div className="flex flex-col justify-center p-4 gap-12">
+                    <div className="flex flex-col justify-center p-4 gap-12 overflow-hidden">
                         <div className={clsx(show ? "translate-x-0" : "translate-x-full", "transition-all duration-1250")}>
                             <div className=" h-18 w-4/5 ml-auto rounded-lg p-2 box-content flex gap-4 items-center">
                                 <div style={{ backgroundImage: `url(${bg1.src})` }} className="w-full h-24 rounded-xl border bg-cover overflow-hidden">
