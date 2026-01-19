@@ -5,7 +5,7 @@ import Contact from "../components/forms/Contact"
 import StackedCards from "../components/animations/StackedCards"
 import clsx from "clsx"
 import localFont from "next/font/local"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { FaEnvelope, FaInstagram, FaPhone } from "react-icons/fa6"
 
 export const BLACK = localFont({
@@ -23,7 +23,7 @@ import bg4 from "@/public/code.jpg"
 import work from "@/public/work.jpg"
 import lens from "@/public/lens.jpg"
 
-import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useInView } from "@react-spring/web"
 
 type Props = {}
 
@@ -95,7 +95,7 @@ const Page = (props: Props) => {
                     </>
                 )}
             </Section>
-            <Section className="min-h-screen md:h-full flex mb-24 overflow-hidden flex-col p-2">
+            <Section className="min-h-screen md:h-full flex mb-24 flex-col p-2">
                 {(inView: boolean) => (
                     <>
                         <div className="flex flex-1 justify-end">
@@ -171,14 +171,15 @@ const Page = (props: Props) => {
 }
 
 const Section = ({ children, ...props }) => {
-    const [show, setShow] = useState(false)
-    const [ref, inView] = useIntersectionObserver({ threshold: .5, root: null })
-    useEffect(() => { 
-        if(!show && inView?.isIntersecting) setShow(true)
-    }, [inView?.isIntersecting])
+    const body = useRef<HTMLElement>()
+    const [ref, inView] = useInView({ once: true, amount: .4, root: body })
+
+    useEffect(() => {
+        body.current = document.body
+    }, [])
     return (
         <section ref={ref} {...props}>
-            {typeof children === "function" ? children(show) : children}
+            {typeof children === "function" ? children(inView) : children}
         </section>
     )
 }

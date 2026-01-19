@@ -14,7 +14,6 @@
     "@makeswift/runtime": "^0.10.7",
     "@react-spring/web": "^10.0.3",
     "@trycourier/courier": "^4.1.0",
-    "@uidotdev/usehooks": "^2.4.1",
     "@vercel/analytics": "^1.6.1",
     "@vercel/blob": "^0.23.4",
     "axios": "^1.2.3",
