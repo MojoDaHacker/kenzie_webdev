@@ -28,11 +28,6 @@ import { useInView } from "@react-spring/web"
 type Props = {}
 
 const Page = (props: Props) => {
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setShow(true)
-    //     }, 4000);
-    // }, [])
     return (
         <div className="h-full">
             <section className={clsx("h-full mb-24 flex flex-col-reverse md:flex-row items-end border-b")}>
@@ -126,7 +121,7 @@ const Page = (props: Props) => {
                         </div>
                         <div className="md:hidden">
                             <div>
-                                <Image className="z-0" src={work} alt={""} width={1080} height={1080} />
+                                <Image className="z-0" src={work} alt={""} width={1080} height={1080} placeholder="blur" />
                                 <div className="md:border-r md:border-b border-orange-300 flex-1 p-2 text-center overflow-hidden flex flex-col gap-4 justify-center items-center" >
                                     <p className={clsx(inView ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0", "transition-all duration-1500 ease-in-out  text-xl")}>The Playground is a Phoenix-based digital video production and website development firm, focused on providing an honest and higher quality of service.</p>
                                     <button className="p-2 bg-orange-300 text-black rounded-lg">Learn More</button>
@@ -134,7 +129,7 @@ const Page = (props: Props) => {
                             </div>
                             <div>
                                 <div className="p-8 md:p-0">
-                                    <Image className="z-0" src={lens} alt={""} width={1080} height={1080} />
+                                    <Image className="z-0" src={lens} alt={""} width={1080} height={1080} placeholder="blur" />
                                 </div>
                                 <div className="md:border-l border-orange-300 flex-1 p-2 text-center overflow-hidden flex flex-col gap-4 justify-center items-center">
                                     <p className={clsx(inView ? "translate-x-0 opacity-100" : "translate-x-full opacity-0", "transition-all duration-1500 ease-in-out  text-xl")}>The real estate and construction industries are just a few of the industries we service to generate quality videos and imaging for logistical and marketing needs.</p>
