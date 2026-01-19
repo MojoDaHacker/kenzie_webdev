@@ -23,7 +23,7 @@ import bg4 from "@/public/code.jpg"
 import work from "@/public/work.jpg"
 import lens from "@/public/lens.jpg"
 
-import { useInView } from "@react-spring/web"
+import { useIntersectionObserver } from "@uidotdev/usehooks";
 
 type Props = {}
 
@@ -171,10 +171,14 @@ const Page = (props: Props) => {
 }
 
 const Section = ({ children, ...props }) => {
-    const [ref, inView] = useInView({ once: true, amount: .5 })
+    const [show, setShow] = useState(false)
+    const [ref, inView] = useIntersectionObserver({ threshold: .5, root: null })
+    useEffect(() => { 
+        if(!show && inView?.isIntersecting) setShow(true)
+    }, [inView?.isIntersecting])
     return (
         <section ref={ref} {...props}>
-            {typeof children === "function" ? children(inView) : children}
+            {typeof children === "function" ? children(show) : children}
         </section>
     )
 }
