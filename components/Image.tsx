@@ -4,12 +4,25 @@ import React, { useState, type JSX } from 'react';
 import clsx from "clsx";
 import NextImage, { ImageLoader } from "next/image"
 import { StaticImport, PlaceholderValue, OnLoadingComplete } from 'next/dist/shared/lib/get-img-props';
+import { animated, useSpring } from '@react-spring/web';
 
 const Image = ({ src = "https://picsum.photos/1080", className, objectFit, ...rest }: ImageProps) => {
   const [isLoading, setLoading] = useState(true)
 
+  const styles = useSpring({
+    filter: isLoading ? 'blur(20px)' : 'blur(0px)',
+    config: { duration: 500 }
+  });
+
+  const AnimatedImage = animated(NextImage)
+
   if (!(rest.width && rest.height)) rest.fill = true
-  return <NextImage onLoad={() => setLoading(false)} className={clsx(isLoading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100', objectFit && `duration-700 ease-in-out object-${objectFit}`, className)}  {...{ ...rest, src: src ?? "https://picsum.photos/1080" }} />
+  return <AnimatedImage
+    onLoad={() => setLoading(false)}
+    style={styles}
+    className={clsx(objectFit && `object-${objectFit}`, className)}
+    {...{ ...rest, src: src ?? "https://picsum.photos/1080" }}
+  />
 }
 
 export default Image
