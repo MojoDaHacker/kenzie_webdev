@@ -95,7 +95,7 @@ const Page = (props: Props) => {
                     </>
                 )}
             </Section>
-            <Section className="min-h-screen md:h-full flex mb-24 flex-col p-2">
+            <Section className="min-h-screen md:h-full flex mb-24 overflow-hidden flex-col p-2">
                 {(inView: boolean) => (
                     <>
                         <div className="flex flex-1 justify-end">
