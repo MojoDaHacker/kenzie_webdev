@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+import Image from "../components/Image"
 import Contact from "../components/forms/Contact"
 import StackedCards from "../components/animations/StackedCards"
 import clsx from "clsx"

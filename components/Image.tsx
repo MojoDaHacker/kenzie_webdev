@@ -1,11 +1,15 @@
-import React, { type JSX } from 'react';
+'use client'
+
+import React, { useState, type JSX } from 'react';
 import clsx from "clsx";
 import NextImage, { ImageLoader } from "next/image"
 import { StaticImport, PlaceholderValue, OnLoadingComplete } from 'next/dist/shared/lib/get-img-props';
 
 const Image = ({ src = "https://picsum.photos/1080", className, objectFit, ...rest }: ImageProps) => {
+  const [isLoading, setLoading] = useState(true)
+
   if (!(rest.width && rest.height)) rest.fill = true
-  return <NextImage className={clsx(objectFit && `object-${objectFit}`, className)}  {...{ ...rest, src: src ?? "https://picsum.photos/1080" }} />
+  return <NextImage onLoad={() => setLoading(false)} className={clsx(isLoading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100', objectFit && `duration-700 ease-in-out object-${objectFit}`, className)}  {...{ ...rest, src: src ?? "https://picsum.photos/1080" }} />
 }
 
 export default Image
