@@ -95,7 +95,7 @@ const Page = (props: Props) => {
                     </>
                 )}
             </Section>
-            <Section className="h-screen md:h-full flex mb-24 flex-col overflow-hidden p-2">
+            <Section className="min-h-screen md:h-full flex mb-24 flex-col overflow-hidden p-2">
                 {(inView: boolean) => (
                     <>
                         <div className="flex flex-1 justify-end">
@@ -124,7 +124,7 @@ const Page = (props: Props) => {
                                 <Image className="z-0" src={work} alt={""} width={1080} height={1080} placeholder="blur" />
                                 <div className="md:border-r md:border-b border-orange-300 flex-1 p-2 text-center overflow-hidden flex flex-col gap-4 justify-center items-center" >
                                     <p className={clsx(inView ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0", "transition-all duration-1500 ease-in-out  text-xl")}>The Playground is a Phoenix-based digital video production and website development firm, focused on providing an honest and higher quality of service.</p>
-                                    <button className="p-2 bg-orange-300 text-black rounded-lg">Learn More</button>
+                                    {/* <button className="p-2 bg-orange-300 text-black rounded-lg">Learn More</button> */}
                                 </div>
                             </div>
                             <div>
@@ -133,7 +133,7 @@ const Page = (props: Props) => {
                                 </div>
                                 <div className="md:border-l border-orange-300 flex-1 p-2 text-center overflow-hidden flex flex-col gap-4 justify-center items-center">
                                     <p className={clsx(inView ? "translate-x-0 opacity-100" : "translate-x-full opacity-0", "transition-all duration-1500 ease-in-out  text-xl")}>The real estate and construction industries are just a few of the industries we service to generate quality videos and imaging for logistical and marketing needs.</p>
-                                    <button className="p-2 bg-orange-300 text-black rounded-lg">Learn More</button>
+                                    {/* <button className="p-2 bg-orange-300 text-black rounded-lg">Learn More</button> */}
                                 </div>
                             </div>
                         </div>
@@ -172,8 +172,6 @@ const Page = (props: Props) => {
 
 const Section = ({ children, ...props }) => {
     const [ref, inView] = useInView({ once: true, amount: .5 })
-
-    console.log(inView, ref.current)
     return (
         <section ref={ref} {...props}>
             {typeof children === "function" ? children(inView) : children}
