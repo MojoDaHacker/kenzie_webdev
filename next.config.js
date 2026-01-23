@@ -5,7 +5,7 @@ const nextConfig = {
   redirects:  () => [
     {
       source: "/landing",
-      destination: "/headshots",
+      destination: "/",
       permanent: true
     },
   ],
