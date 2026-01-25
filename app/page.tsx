@@ -111,7 +111,7 @@ const Page = (props: Props) => {
                                                                 <p className="p-2 -skew-x-24">{title}</p>
                                                             </div>
                                                         </div>
-                                                        {active === i && desc && <div className="border-t p-2 border-orange-300 bg-[rgba(0,0,0,.5)]">{desc}</div>}
+                                                        {active === i && desc && <div className="border-t p-2 border-orange-300 bg-[rgba(0,0,0,.75)]">{desc}</div>}
                                                     </div>
                                                 </div>
                                             </div>
