@@ -29,7 +29,7 @@ type Props = {}
 
 const Page = (props: Props) => {
     const [active, setActive] = useState(null)
-    const [expanedStyle, setExpanedStyle] = useState({ marginLeft: 78 })
+    const [expanedStyle, setExpanedStyle] = useState({})
 
     const expand = "w-full h-[85vh] fixed top-0 p-4"
 
@@ -49,10 +49,10 @@ const Page = (props: Props) => {
         console.log(eleScreenPosition)
 
         setActive((prev: number | null) => prev !== null ? null : id)
-        // setExpanedStyle(active !== id ? {
-        //     // marginLeft: 2,
-        //     // transform: `translateY(-${eleScreenPosition.top}px)`
-        // } : {})
+        setExpanedStyle(active !== id ? {
+            // marginLeft: 2,
+            transform: `translateY(-${eleScreenPosition.top}px)`
+        } : {})
     }
 
 
