@@ -5,7 +5,7 @@ import Contact from "../components/forms/Contact"
 import StackedCards from "../components/animations/StackedCards"
 import clsx from "clsx"
 import localFont from "next/font/local"
-import { useEffect, useRef, useState } from "react"
+import { MouseEventHandler, useEffect, useRef, useState } from "react"
 import { FaEnvelope, FaInstagram, FaPhone } from "react-icons/fa6"
 
 export const BLACK = localFont({
@@ -28,6 +28,34 @@ import { useInView } from "@react-spring/web"
 type Props = {}
 
 const Page = (props: Props) => {
+    const [active, setActive] = useState(null)
+    const [expanedStyle, setExpanedStyle] = useState({ marginLeft: 78 })
+
+    const expand = "w-full h-[85vh] fixed top-0 p-4"
+
+    const services = [
+        { title: "Studio Photography", img: bg1.src },
+        { title: "Video & Audio Production", img: bg2.src },
+        { title: "Aerial Photography & Videography", img: bg3.src },
+        { title: "Mobile & Web Development", img: bg4.src }
+    ]
+
+    const handleCardExpansion: MouseEventHandler = (e) => {
+        const ele = e.currentTarget
+        const id = Number(ele.id)
+        const eleScreenPosition = e.currentTarget.getBoundingClientRect()
+
+        console.log(window.getComputedStyle(ele))
+        console.log(eleScreenPosition)
+
+        setActive((prev: number | null) => prev !== null ? null : id)
+        setExpanedStyle(active !== id ? {
+            // marginLeft: 2,
+            transform: `translateY(-${eleScreenPosition.top}px)`
+        } : {})
+    }
+
+
     return (
         <div className="h-full">
             <section className={clsx("h-full mb-24 flex flex-col-reverse md:flex-row items-end border-b")}>
@@ -53,43 +81,49 @@ const Page = (props: Props) => {
                             <div className="m-4">
                                 <h2 className={clsx(BLACK.className, "uppercase text-4xl")}>Services</h2>
                             </div>
-                            <div className="flex flex-col justify-center p-4 gap-12 overflow-hidden">
-                                <div className={clsx(inView ? "translate-x-0" : "translate-x-full", "transition-all duration-1250")}>
-                                    <div className=" h-18 w-4/5 ml-auto rounded-lg p-2 box-content flex gap-4 items-center">
-                                        <div style={{ backgroundImage: `url(${bg1.src})` }} className="w-full h-25 rounded-xl border bg-cover overflow-hidden">
-                                            <div className="relative top-full -left-2 bg-black border border-orange-300 skew-x-24 w-fit px-4 py-1 -translate-y-full">
-                                                <p className="text-sm -skew-x-24">Studio Photography</p>
+                            <div className={clsx("flex flex-col justify-center gap-4")}>
+                                {services.map(({ title, img }, i) => (
+                                    <div className="overflow-x-clip" key={title}>
+                                        <div
+                                            id={String(i)}
+                                            onClick={handleCardExpansion}
+                                            style={{
+                                                transform: inView ? "translateX(0px)" : i % 2 ? "translateX(100%)" : "translateX(-100%)",
+                                            }}
+                                            className={clsx(
+                                                "transition-all duration-1250 h-25 w-full ease-in-out relative",
+                                                active === i ? "z-10 relative" : "z-0"
+                                            )}
+                                        >
+                                            <div
+                                                style={
+                                                    active === i ?
+                                                        { ...expanedStyle, marginLeft: 0 } :
+                                                        { marginLeft: i % 2 ? 0 : 78 }
+                                                }
+                                                className={clsx(
+                                                    "transition-all duration-1250 ease-in-out",
+                                                    active == i ? expand : "p-2 w-4/5 h-full"
+                                                )}
+                                            >
+                                                <div style={{ backgroundImage: `url(${img})` }} className="w-full h-full rounded-xl border bg-cover overflow-hidden bg-center flex flex-col justify-end">
+                                                    <div className="flex flex-col">
+                                                        <div className={clsx(
+                                                            "relative z-20",
+                                                            "transition-all duration-1250",
+                                                            active === i ? "left-1/2 -translate-x-1/4" : "-left-2"
+                                                        )}>
+                                                            <div className="text-sm text-nowrap skew-x-24 border border-b-0 border-orange-300 w-fit bg-black px-2">
+                                                                <p className="p-2 -skew-x-24">{title}</p>
+                                                            </div>
+                                                        </div>
+                                                        {active === i && <div className="border-t p-2 border-orange-300 bg-[rgba(0,0,0,.5)]">Hell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell there  </div>}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className={clsx(inView ? "translate-x-0" : "-translate-x-full", "transition-all duration-1250")}>
-                                    <div className=" h-18 w-4/5 rounded-lg p-2 box-content flex gap-4 items-center">
-                                        <div style={{ backgroundImage: `url(${bg2.src})` }} className="w-full h-25 rounded-xl border bg-cover overflow-hidden">
-                                            <div className="relative top-full -left-2 bg-black border border-orange-300 skew-x-24 w-fit px-4 py-1 -translate-y-full">
-                                                <p className="text-sm -skew-x-24">Video & Audio Production</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={clsx(inView ? "translate-x-0" : "translate-x-full", "transition-all duration-1250")}>
-                                    <div className="h-18 w-4/5 ml-auto rounded-lg p-2 box-content flex gap-4 items-center">
-                                        <div style={{ backgroundImage: `url(${bg3.src})` }} className="w-full h-25 rounded-xl border bg-cover overflow-hidden">
-                                            <div className="relative top-full -left-2 bg-black border border-orange-300 skew-x-24 w-fit px-4 py-1 -translate-y-full">
-                                                <p className="text-sm -skew-x-24">Aerial Photography & Videography</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={clsx(inView ? "translate-x-0" : "-translate-x-full", "transition-all duration-1250")}>
-                                    <div className=" h-18 w-4/5 rounded-lg p-2 box-content flex gap-4 items-center">
-                                        <div style={{ backgroundImage: `url(${bg4.src})` }} className="w-full h-25 rounded-xl border bg-cover overflow-hidden">
-                                            <div className="relative top-full -left-2 bg-black border border-orange-300 skew-x-24 w-fit px-4 py-1 -translate-y-full">
-                                                <p className="text-sm -skew-x-24">Mobile & Web Development</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </>
