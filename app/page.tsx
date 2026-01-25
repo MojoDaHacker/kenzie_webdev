@@ -34,10 +34,10 @@ const Page = (props: Props) => {
     const expand = "w-full h-[85vh] fixed top-0 p-4"
 
     const services = [
-        { title: "Studio Photography", img: bg1.src },
-        { title: "Video & Audio Production", img: bg2.src },
-        { title: "Aerial Photography & Videography", img: bg3.src },
-        { title: "Mobile & Web Development", img: bg4.src }
+        { title: "Studio Photography", img: bg1.src, desc: "Hell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell there" },
+        { title: "Video & Audio Production", img: bg2.src, desc: "" },
+        { title: "Aerial Photography & Videography", img: bg3.src, desc: "" },
+        { title: "Mobile & Web Development", img: bg4.src, desc: "" }
     ]
 
     const handleCardExpansion: MouseEventHandler = (e) => {
@@ -49,10 +49,10 @@ const Page = (props: Props) => {
         console.log(eleScreenPosition)
 
         setActive((prev: number | null) => prev !== null ? null : id)
-        setExpanedStyle(active !== id ? {
-            // marginLeft: 2,
-            transform: `translateY(-${eleScreenPosition.top}px)`
-        } : {})
+        // setExpanedStyle(active !== id ? {
+        //     // marginLeft: 2,
+        //     // transform: `translateY(-${eleScreenPosition.top}px)`
+        // } : {})
     }
 
 
@@ -82,7 +82,7 @@ const Page = (props: Props) => {
                                 <h2 className={clsx(BLACK.className, "uppercase text-4xl")}>Services</h2>
                             </div>
                             <div className={clsx("flex flex-col justify-center gap-4")}>
-                                {services.map(({ title, img }, i) => (
+                                {services.map(({ title, img, desc }, i) => (
                                     <div className="overflow-x-clip" key={title}>
                                         <div
                                             id={String(i)}
@@ -117,7 +117,7 @@ const Page = (props: Props) => {
                                                                 <p className="p-2 -skew-x-24">{title}</p>
                                                             </div>
                                                         </div>
-                                                        {active === i && <div className="border-t p-2 border-orange-300 bg-[rgba(0,0,0,.5)]">Hell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell there  </div>}
+                                                        {active === i && desc && <div className="border-t p-2 border-orange-300 bg-[rgba(0,0,0,.5)]">{desc}</div>}
                                                     </div>
                                                 </div>
                                             </div>
