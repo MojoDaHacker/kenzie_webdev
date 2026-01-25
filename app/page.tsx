@@ -34,10 +34,10 @@ const Page = (props: Props) => {
     const expand = "w-full h-[85vh] fixed top-0 p-4"
 
     const services = [
-        { title: "Studio Photography", img: bg1.src, desc: "Hell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell thereHell there" },
-        { title: "Video & Audio Production", img: bg2.src, desc: "" },
-        { title: "Aerial Photography & Videography", img: bg3.src, desc: "" },
-        { title: "Mobile & Web Development", img: bg4.src, desc: "" }
+        { title: "Studio Photography", img: bg1.src, desc: "Shot in a controlled indoor environment providing complete command over lighting, backgrounds, props, and camera angles to create consistent, high-quality images, free from external elements like weather or unpredictable surroundings, ideal for portraits, products, and fashion." },
+        { title: "Video & Audio Production", img: bg2.src, desc: "End-to-end process of creating multimedia content by capturing, editing, and mixing visual and auditory elements. It covers everything from initial planning and filming to editing, sound design, and final output for films, commercials, and social media." },
+        { title: "Aerial Photography & Videography", img: bg3.src, desc: "Provides unique, high-resolution, bird's-eye perspectives for film, real estate, and marketing, offering cost-effective alternatives to traditional ground-based filming." },
+        { title: "Mobile & Web Development", img: bg4.src, desc: "Creating, building, and maintaining websites and web applications, involving everything from visual design (front-end) to server-side logic and databases (back-end), ensuring a site is functional, user-friendly, and accessible across devices using languages like HTML, CSS, and JavaScript. It's a blend of technical skills and creativity, ranging from simple static pages to complex e-commerce sites and social networks." }
     ]
 
     const handleCardExpansion: MouseEventHandler = (e) => {
@@ -45,14 +45,8 @@ const Page = (props: Props) => {
         const id = Number(ele.id)
         const eleScreenPosition = e.currentTarget.getBoundingClientRect()
 
-        console.log(window.getComputedStyle(ele))
-        console.log(eleScreenPosition)
-
         setActive((prev: number | null) => prev !== null ? null : id)
-        setExpanedStyle(active !== id ? {
-            // marginLeft: 2,
-            transform: `translateY(-${eleScreenPosition.top}px)`
-        } : {})
+        setExpanedStyle(active !== id ? { transform: `translateY(-${eleScreenPosition.top}px)` } : {})
     }
 
 
